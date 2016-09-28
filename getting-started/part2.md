@@ -51,10 +51,7 @@ This `Dockerfile` refers to a couple of things we haven't created yet, namely
 
 This paradigm is how developing with Docker essentially works. Make a
 `Dockerfile` that includes the base image, grabs your code, installs
-dependencies, initializes variables, and runs the command. For running out
-of the box software that your app depends on (like Redis, or MySQL), it's even
-easier -- no `Dockerfile` is necessary at all, unless you want to make an image
-that has all your preferences "baked in."
+dependencies, initializes variables, and runs the command.
 
 ### The app itself
 
