@@ -12,6 +12,8 @@ menu:
 title: Integrate with Docker Trusted Registry
 ---
 
+
+
 # Integrate with Docker Trusted Registry
 
 You can integrate UCP with Docker Trusted Registry (DTR). This allows you to

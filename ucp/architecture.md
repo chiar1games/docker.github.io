@@ -10,6 +10,7 @@ menu:
 title: Architecture
 ---
 
+
 # UCP architecture
 
 UCP is a containerized application, so the first step to install UCP is

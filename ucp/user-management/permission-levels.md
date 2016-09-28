@@ -11,6 +11,7 @@ menu:
 title: Permission levels
 ---
 
+
 # Permission levels
 
 Docker Universal Control Plane has two types of users: administrators and

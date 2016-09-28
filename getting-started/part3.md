@@ -1,8 +1,8 @@
 ---
-title: "Getting Started with Docker - Part 3"
+title: "Getting Started, Part 3: Stateful, Multi-container Applications"
 ---
 
-# Getting Started with Docker - Part 3
+# Getting Started, Part 3: Stateful, Multi-container Applications
 
 - Explain goal of adding counter, with problem of container isolation
 - Explain volumes

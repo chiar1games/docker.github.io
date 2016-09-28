@@ -12,6 +12,7 @@ menu:
 title: Evaluate UCP in a sandbox
 ---
 
+
 # Evaluate UCP in a sandbox
 
 This page helps you to learn about Docker Universal Control Plane (UCP) at a
@@ -86,9 +87,11 @@ Set up the nodes for your evaluation:
 
 2. Use Docker Machine to list any VMs in VirtualBox.
 
-  		$ docker-machine ls
-  		NAME         ACTIVE   DRIVER       STATE     URL                         SWARM
-  		default    *        virtualbox   Running   tcp://192.168.99.100:2376  
+
+        $ docker-machine ls
+        NAME         ACTIVE   DRIVER       STATE     URL                         SWARM
+        default    *        virtualbox   Running   tcp://192.168.99.100:2376  
+
 
 3. Create a VM named `node1`.  
 

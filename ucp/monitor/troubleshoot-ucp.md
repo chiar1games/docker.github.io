@@ -1,3 +1,4 @@
+
 ---
 description: Learn how to troubleshoot your Docker Universal Control Plane cluster.
 keywords:
@@ -9,6 +10,7 @@ menu:
     weight: 10
 title: Troubleshoot your cluster
 ---
+
 
 # Troubleshoot your cluster
 

@@ -13,6 +13,7 @@ menu:
 title: Upgrade UCP
 ---
 
+
 # Upgrade UCP
 
 This page guides you on upgrading Docker Universal Control Plane (UCP).

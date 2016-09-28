@@ -10,6 +10,7 @@ menu:
 title: License UCP
 ---
 
+
 # License UCP
 
 After installing Docker Universal Control Plane, you need to license your

@@ -11,6 +11,7 @@ menu:
 title: Create and manage teams
 ---
 
+
 # Create and manage teams
 
 You can extend the user's default permissions by granting them fine-grain

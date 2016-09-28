@@ -11,6 +11,7 @@ menu:
 title: Replicate CAs for high availability
 ---
 
+
 # Replicate CAs for high availability
 
 Internally, UCP uses two Certificate Authorities:

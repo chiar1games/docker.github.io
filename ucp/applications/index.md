@@ -10,6 +10,7 @@ menu:
 title: Applications
 ---
 
+
 # UCP applications
 
 This section includes the following topics:

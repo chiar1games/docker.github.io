@@ -10,6 +10,7 @@ menu:
 title: High-availability
 ---
 
+
 # Configure UCP for high availability
 
 This section includes the following topics:

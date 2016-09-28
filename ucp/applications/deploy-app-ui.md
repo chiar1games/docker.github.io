@@ -11,6 +11,7 @@ menu:
 title: Deploy an app from the UI
 ---
 
+
 # Deploy an app from the UI
 
 With Docker Universal Control Plane you can deploy applications from the

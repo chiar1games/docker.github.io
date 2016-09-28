@@ -13,6 +13,7 @@ menu:
 title: Authentication and authorization
 ---
 
+
 # Authentication and authorization
 
 With Docker Universal Control Plane you get to control who can create and edit

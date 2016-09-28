@@ -13,6 +13,7 @@ menu:
 title: Integrate with LDAP
 ---
 
+
 # Integrate with LDAP
 
 Docker UCP integrates with LDAP services, so that you can manage users from a

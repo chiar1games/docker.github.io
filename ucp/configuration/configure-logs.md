@@ -11,6 +11,7 @@ menu:
 title: Configure UCP logging
 ---
 
+
 ## Configure UCP logging
 
 You can configure UCP for sending logs to a remote logging service:

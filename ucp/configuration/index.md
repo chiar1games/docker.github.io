@@ -1,3 +1,4 @@
+
 ---
 description: Learn how to configure Docker Universal Control Plane on production.
 keywords:
@@ -9,6 +10,7 @@ menu:
     weight: 50
 title: Configuration
 ---
+
 
 # UCP configuration
 

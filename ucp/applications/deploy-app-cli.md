@@ -13,6 +13,8 @@ menu:
 title: Deploy an app from the CLI
 ---
 
+
+
 # Deploy an app from the CLI
 
 With Docker Universal Control Plane you can deploy your apps from the CLI,
