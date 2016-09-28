@@ -38,33 +38,33 @@ to our simple Hello World app. Don't worry, it's shockingly easy.
 
 ## Your first `docker-compose.yml` File
 
-As you saw, a `Dockerfile` is a flat text file full of directives that define
-what goes in a single Docker image. But a `docker-compose.yml` file is a YAML
-markup file that is hierarchical in structure, and defines how multiple Docker
-images should work together when they are running in containers.
+As you saw, a `Dockerfile` is a text file that defines a single Docker image.
+But a `docker-compose.yml` file is a YAML markup file that is hierarchical in
+structure, and defines how multiple Docker images should work together when
+they are running in containers.
 
 We saw that the "Hello World" app we created looked for a running instance of
-Redis, and if it failed, it produced an error message. Well, just as we grabbed
-the base image of Python so we could have a runtime for our app, we can grab the
-official image of Redis, and run that right alongside the app, so the check will
-pass.
+Redis, and if it failed, it produced an error message. All we need is a running
+Redis instance, and that error message will be replaced with a visitor counter. 
+
+Well, just as we grabbed the base image of Python earlier, we can grab the
+official image of Redis, and run that right alongside our app.
 
 Save this `docker-compose.yml` file:
 
 {% gist johndmulhausen/7b8e955ccc939d9cef83a015e06ed8e7 %}
 
-Yes, that's all you need to specify, and Redis will be pulled and run. When
-running out-of-the-box software that your app depends on (like Redis, or MySQL),
-no `Dockerfile` is necessary, unless you want to make a custom image that has
-all your preferences "baked in." In this case, we're just using the official
-Redis image and accepting the default settings they use. (Redis documents these
+Yes, that's all you need to specify, and Redis will be pulled and run. You could
+make a `Dockerfile` that pulls in the base image of Redis and builds a custom
+image that has all your preferences "baked in," but we're just going to point to
+the base image here, and accept the default settings. (Redis documents these
 defaults on [the page for the official Redis
 image](https://store.docker.com/images/1f6ef28b-3e48-4da1-b838-5bd8710a2053)).
 
-To break down what this `docker-compose.yml` file is specifying:
+This `docker-compose.yml` file tells Docker to do the following:
 
 - Pull and run [the image we uploaded in step 2](/getting-started/part2/#/share-the-app) as a service called `web`
-- Map port 80 on the host machine running this container to port 80 inside the container (so http://localhost:80 resolves properly)
+- Map port 80 on the host to the container's port 80 (so http://localhost:80 resolves properly)
 - Link this container to the service we named `redis`; this ensures that the
   dependency between `redis` and `web` is expressed, as well as the order of service
   startup.
@@ -72,7 +72,7 @@ To break down what this `docker-compose.yml` file is specifying:
 
 ## Run your first multi-container app
 
-Run this command in the same directory where you saved `docker-compose.yml`:
+Run this command in the directory where you saved `docker-compose.yml`:
 
 ```shell
 docker-compose up
@@ -82,7 +82,7 @@ This will pull all the necessary images and run them in concert. Now when you
 visit `http://localhost`, you'll see a number next to the visitor counter
 instead of the error message. It really works -- just keep hitting refresh.
 
-## Yes, that's really Redis
+## Connecting to this instance of Redis
 
 With a containerized instance of Redis running, you're probably wondering --
 how do I break through the wall of isolation and manage my data? The answer is,
@@ -90,10 +90,41 @@ port mapping. [The page for the official Redis
 image](https://store.docker.com/images/1f6ef28b-3e48-4da1-b838-5bd8710a2053)
 states that the normal management ports are open in their image, so you should
 be able to connect to it at `localhost:6379` if you add a `ports:` section to
-`docker-compose.yaml` under `redis` that maps `6379` to your host, just as port
+`docker-compose.yml` under `redis` that maps `6379` to your host, just as port
 `80` is mapped for `web`. Same with MySQL or any other data solution;
 containerized doesn't mean unreachable, it just means portable. Once you map
 your ports, you can use your fave UI tools like MySQL Workbench, Redis Desktop
 Manager, etc, to connect to your Dockerized instance.
 
-[On to next >>](part4.md){: class="button darkblue-btn"}
+Redis port mapping isn't necessary in `docker-compose.yml` because the two
+services (`web` and `redis`) are linked, ensuring they run on the same host (VM 
+or physical machine). Within that host, the containers can talk to each other
+in a private subnet that is automatically created by the Docker runtime, which
+isn't accessible to the outside world, only to other containers. In our app,
+we specify `EXPOSE 80` in our Dockerfile, and as you can see in the Redis
+documentation, they specify `EXPOSE 6379` in the Dockerfile that defines the
+official Redis image. But those ports aren't accessible outside of the private
+subnet (or, in turn, reachable at `http://localhost`) until you map the host's
+port 80 to the container's port 80, which is why we specified as much in
+`docker run` previously, and `docker-compose.yml` just now. 
+
+## Get ready to scale
+
+Until now, I've been able to shield you from worrying too much about host
+management. That's because installing Docker always sets up a default way
+to run containers in a single-host environment. Docker for Windows and Mac 
+comes with a virtual machine host running a lighweight operating system
+we call Moby, which is just a very slimmed-down Linux. Docker for Linux 
+just works without a VM at all. And Docker for Windows can run Microsoft 
+Windows containers using native Hyper-V support. When you've run `docker
+run` and `docker-compose up` so far, Docker has used these default hosts
+to run your containers. That's because we want you to be able to install
+Docker and get straight to the work of development and building images.
+
+But when it comes to getting your app into production, we all know that
+you're not going to run just one host machine that has Redis, Python, and
+all your other sevices. That won't scale. You need to learn how to run not
+just multiple containers on one host, but multiple containers on multiple
+hosts. And that's precisely what we're going to get into next.
+
+[On to "Part 4: Running our App in Production" >>](part4.md){: class="button darkblue-btn"}
